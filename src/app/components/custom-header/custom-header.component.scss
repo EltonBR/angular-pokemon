@@ -1,0 +1,23 @@
+@import '../../../custom-theme.scss';
+
+.header-container {
+    width: 100%;
+    height: 70px;
+    position: relative;
+}
+
+.header {
+    position:fixed;
+    background-color: mat-color($angular-pokemon-primary);
+    width: 100%;
+    height: 60px;
+    color:#fff;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    z-index: 100;
+}
+
+.header h1 {
+    margin:0px;
+}

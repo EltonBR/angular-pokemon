@@ -1,0 +1,20 @@
+.flex-grid {
+	display: flex;
+    flex-wrap: wrap;
+	justify-content: center;
+}
+
+.flex-grid-item {
+	padding: 10px;
+	flex-shrink: 0;
+	flex-basis: 250px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@media (max-width: 600px) {
+    .flex-grid-item {
+        flex-basis: 80%;
+    }
+}
