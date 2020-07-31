@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import ICard from '../../interfaces/card';
 
 @Component({
   selector: 'app-pokemon-card-item',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PokemonCardItemComponent implements OnInit {
 
+  @Input() card: ICard;
   constructor() { }
 
   ngOnInit(): void {

@@ -1,3 +1,4 @@
+
 .flex-grid {
 	display: flex;
     flex-wrap: wrap;
@@ -5,16 +6,21 @@
 }
 
 .flex-grid-item {
+    transition: 120ms;
 	padding: 10px;
-	flex-shrink: 0;
-	flex-basis: 250px;
+	flex-grow: 1;
+	min-width: 240px;
+	max-width: 320px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
-@media (max-width: 600px) {
-    .flex-grid-item {
-        flex-basis: 80%;
-    }
+.flex-grid-item:hover {
+    transition: 120ms;
+    transform: scale(1.03)
+}
+
+.flex-grid-item app-pokemon-card-item {
+	width: 100%;
 }

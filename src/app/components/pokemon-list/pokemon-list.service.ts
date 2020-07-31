@@ -11,9 +11,7 @@ export class PokemonListService {
   constructor(private http: HttpClient) {
   }
 
-  getPokemons(page = 1, pageSize = 100): Observable<ICards> {
+  getPokemons(page = 1, pageSize = 10): Observable<ICards> {
     return this.http.get(`${this.baseUrl}/cards?page${page}&pageSize=${pageSize}`);
   }
-
-
 }
