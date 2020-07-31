@@ -3,7 +3,7 @@
     <mat-card-title class="line-height-3x">{{card.name}}</mat-card-title>
     <mat-card-subtitle>{{card.id}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image defaultImage="/assets/images/lazy.png" [lazyLoad]="card.imageUrl" class="image-padding">
+  <img mat-card-image defaultImage="/assets/images/lazy.png" [lazyLoad]="card.imageUrl" class="image-card">
   <mat-card-content>
     <mat-chip-list cdkDropListOrientation="horizontal">
       <mat-chip *ngFor="let chip of card.types" color="primary" selected>

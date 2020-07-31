@@ -9,7 +9,7 @@ const ScaleAnimation = [
       ':enter', 
       [
         style({ transform: 'scale(0.3)'}),
-        animate('300ms ease-out', 
+        animate('600ms ease-out', 
                 style({ transform: 'scale(1)' }))
       ]
     ),
@@ -17,7 +17,7 @@ const ScaleAnimation = [
       ':leave', 
       [
         style({ transform: 'scale(1)'}),
-        animate('200ms ease-in', 
+        animate('350ms ease-in', 
                 style({ transform: 'scale(0)' }))
       ]
     )

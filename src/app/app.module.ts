@@ -7,7 +7,7 @@ import { CustomHeaderModule } from './components/custom-header/custom-header.mod
 import { PokemonListModule } from './pages/pokemon-list/pokemon-list.module';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchDataService } from './services/search-data.service';
-
+import { PokemonCardDetailsModule } from './pages/pokemon-card-details/pokemon-card-details.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -18,7 +18,8 @@ import { SearchDataService } from './services/search-data.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     CustomHeaderModule,
-    PokemonListModule
+    PokemonListModule,
+    PokemonCardDetailsModule
   ],
   providers: [SearchDataService],
   bootstrap: [AppComponent]

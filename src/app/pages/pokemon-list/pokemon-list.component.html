@@ -11,7 +11,7 @@
       Not found cards
     </div>
     <div class="flex-grid-item" *ngFor="let card of cards; let index = index" @inOutAnimation>
-      <app-pokemon-card-item [card]="card"></app-pokemon-card-item>
+      <app-pokemon-card-item [card]="card" routerLink="card-details/{{card.id}}"></app-pokemon-card-item>
     </div>
   </div>
 </div>

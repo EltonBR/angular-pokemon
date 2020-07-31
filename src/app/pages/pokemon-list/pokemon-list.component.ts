@@ -25,7 +25,7 @@ const sortPokemonsByName = (a: ICard, b: ICard) => {
   ]
 })
 export class PokemonListComponent implements OnInit {
-
+  searchActive: boolean = false;
   loadingCards: boolean = true;
   allPokemonCards: Paginator;
   cards: ICard[] = [];
@@ -60,9 +60,11 @@ export class PokemonListComponent implements OnInit {
 
   searchPokemons(name: string) {
     if (name.length == 0) {
+      this.searchActive = false;
       this.allPokemonCards.setPage(0);
       this.cards = this.allPokemonCards.getPageData();
     } else {
+      this.searchActive = true;
       this.cards = this.allPokemonCards.getDataset().filter(item => item.name.toLowerCase().includes(name));
     }
   }
@@ -79,7 +81,10 @@ export class PokemonListComponent implements OnInit {
     let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
     let max = document.documentElement.scrollHeight;
     if(pos == max )   {
-      this.displayMoreCards();
+
+      if (!this.searchActive) {
+        this.displayMoreCards();
+      }
     }
   }
 

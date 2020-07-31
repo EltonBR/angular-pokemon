@@ -4,6 +4,7 @@ import { PokemonListComponent } from './pokemon-list.component';
 import { PokemonListRoutingModule } from './pokemon-list-routing.module';
 import { PokemonCardItemModule } from './../../components/pokemon-card-item/pokemon-card-item.module';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [PokemonListComponent],
@@ -11,7 +12,8 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     CommonModule,
     PokemonListRoutingModule,
     PokemonCardItemModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    RouterModule
   ]
 })
 export class PokemonListModule { }
