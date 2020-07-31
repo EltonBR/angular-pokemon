@@ -4,34 +4,8 @@ import ICard from '../../interfaces/card';
 import { trigger } from '@angular/animations';
 import ScaleAnimation from '../../animations/scale-animation';
 import { SearchDataService } from '../../services/search-data.service';
+import { Paginator } from '../../helpers/paginator';
 
-class Paginator {
-
-  private totalPages: number;
-  private lastPageCountItens: number;
-  private atualPage: number = 0;
-  constructor(private data:any, private itensPerPage:number = 12) {
-    this.totalPages = parseInt((data.length/itensPerPage).toString());
-    this.lastPageCountItens = data.length%itensPerPage;
-
-    console.log(this.totalPages);
-    console.log(this.lastPageCountItens);
-  }
-
-  getPage(page: number) {
-      if (page > this.totalPages) {
-        this.atualPage = page;
-        return this.data.slice(this.data.length - this.lastPageCountItens, this.data.length);
-      } else {
-        return this.data.slice(this.atualPage*page, (this.atualPage*page)+this.itensPerPage);
-        this.atualPage = page;
-      }
-  }
-  end() {
-    return this.atualPage > this.totalPages;
-  }
-
-}
 const sortPokemonsByName = (a: ICard, b: ICard) => {
   if (a.name > b.name) {
     return 1;
@@ -54,7 +28,7 @@ const sortPokemonsByName = (a: ICard, b: ICard) => {
 export class PokemonListComponent implements OnInit {
 
   loadingCards: boolean = true;
-  allPokemonCards: ICard[] = [];
+  allPokemonCards: Paginator;
   cards: ICard[] = [];
   constructor(private PokemonApi: PokemonListService, private searchListener: SearchDataService) { }
 
@@ -74,10 +48,10 @@ export class PokemonListComponent implements OnInit {
     this.loadingCards = true;
     this.PokemonApi.getPokemons().subscribe((response) => {
       this.loadingCards = false;
-      this.allPokemonCards = response.cards.sort(sortPokemonsByName);
-      this.cards = this.allPokemonCards;
+      this.allPokemonCards = new Paginator(response.cards.sort(sortPokemonsByName));;
+      this.cards = this.allPokemonCards.getPageData();
       this.listenSearch();
-      window.pp = new Paginator(this.allPokemonCards);
+
     },
     (err) => {
       this.loadingCards = false;
@@ -87,14 +61,18 @@ export class PokemonListComponent implements OnInit {
 
   searchPokemons(name: string) {
     if (name.length == 0) {
-      this.cards = this.allPokemonCards;
+      this.allPokemonCards.setPage(0);
+      this.cards = this.allPokemonCards.getPageData();
     } else {
-      this.cards = this.allPokemonCards.filter(item => item.name.toLowerCase().includes(name));
+      this.cards = this.allPokemonCards.getDataset().filter(item => item.name.toLowerCase().includes(name));
     }
   }
 
   displayMoreCards() {
-   
+    this.allPokemonCards.nextPage();
+    if (!this.allPokemonCards.end()) {
+      this.cards = [...this.cards, ...this.allPokemonCards.getPageData()];
+    }
   }
 
   @HostListener("window:scroll", ["$event"])
