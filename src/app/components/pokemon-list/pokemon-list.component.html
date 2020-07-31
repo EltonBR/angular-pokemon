@@ -10,7 +10,8 @@
     <div class="message-container" @inOutAnimation *ngIf="cards.length == 0 && loadingCards === false">
       Not found cards
     </div>
-    <div class="flex-grid-item" *ngFor="let card of cards" @inOutAnimation>
+    <div class="flex-grid-item" *ngFor="let card of cards; let index = index" @inOutAnimation>
+      {{index}}
       <app-pokemon-card-item [card]="card"></app-pokemon-card-item>
     </div>
   </div>
