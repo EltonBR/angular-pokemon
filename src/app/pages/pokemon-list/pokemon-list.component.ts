@@ -21,8 +21,7 @@ const sortPokemonsByName = (a: ICard, b: ICard) => {
   templateUrl: './pokemon-list.component.html',
   styleUrls: ['./pokemon-list.component.scss'],
   animations: [
-    trigger(
-      'inOutAnimation', ScaleAnimation)
+    trigger('inOutAnimation', ScaleAnimation)
   ]
 })
 export class PokemonListComponent implements OnInit {

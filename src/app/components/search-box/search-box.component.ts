@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchDataService } from '../../services/search-data.service';
+
 @Component({
   selector: 'app-search-box',
   templateUrl: './search-box.component.html',
@@ -13,8 +14,12 @@ export class SearchBoxComponent implements OnInit {
   }
 
   dispatchSearch() {
-    console.log("displatch", this.searchTerm)
     this.searchDispatcher.updateData(this.searchTerm)
+  }
+
+  clear() {
+    this.searchTerm = '';
+    this.dispatchSearch();
   }
 
 }

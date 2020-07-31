@@ -16,8 +16,31 @@
     align-items: center;
     padding-left: 20px;
     z-index: 100;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .header h1 {
     margin:0px;
+}
+
+.flex-item {
+    display:flex;
+    justify-content:center;
+    width: 260px;
+}
+
+@media(max-width: 540px) {
+
+    .header {
+        justify-content:center;
+        height: 90px;
+
+    }
+
+    .header-container {
+        height: 90px;
+    }
+
 }

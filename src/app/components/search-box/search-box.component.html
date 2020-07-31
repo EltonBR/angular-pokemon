@@ -1,1 +1,7 @@
-<input type="text" [(ngModel)]="searchTerm" (keyup)="dispatchSearch()">
+<mat-form-field appearance="fill" color="accent" class="margin-t-5">
+    <mat-label>Search</mat-label>
+    <input autocomplete="off" matInput type="text" [(ngModel)]="searchTerm" (keyup)="dispatchSearch()">
+    <button mat-button *ngIf="searchTerm" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
+      <mat-icon>close</mat-icon>
+    </button>
+</mat-form-field>
