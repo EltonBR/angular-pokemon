@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PokemonListService } from './pokemon-list.service';
 import ICard from '../../interfaces/card';
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition
-} from '@angular/animations';
+import { trigger } from '@angular/animations';
+import ScaleAnimation from '../../animations/scale-animation';
 
 const sortPokemonsByName = (a: ICard, b: ICard) => {
   if (a.name > b.name) {
@@ -25,30 +20,12 @@ const sortPokemonsByName = (a: ICard, b: ICard) => {
   styleUrls: ['./pokemon-list.component.scss'],
   animations: [
     trigger(
-      'inOutAnimation', 
-      [
-        transition(
-          ':enter', 
-          [
-            style({ transform: 'scale(0.3)'}),
-            animate('300ms ease-out', 
-                    style({ transform: 'scale(1)' }))
-          ]
-        ),
-        transition(
-          ':leave', 
-          [
-            style({ transform: 'scale(1)'}),
-            animate('200ms ease-in', 
-                    style({ transform: 'scale(0)' }))
-          ]
-        )
-      ]
-    )
+      'inOutAnimation', ScaleAnimation)
   ]
 })
 export class PokemonListComponent implements OnInit {
 
+  loadingCards: boolean = true;
   allPokemonCards: ICard[];
   cards: ICard[];
   constructor(private PokemonApi: PokemonListService) { }
@@ -58,21 +35,22 @@ export class PokemonListComponent implements OnInit {
   }
 
   listPokemons() {
+    this.loadingCards = true;
     this.PokemonApi.getPokemons().subscribe((response) => {
+      this.loadingCards = false;
       this.allPokemonCards = response.cards.sort(sortPokemonsByName);
       this.cards = response.cards.sort(sortPokemonsByName);
-
-      setTimeout(() => {
-        this.searchPokemons('bello');
-
-      }, 5000)
     },
     (err) => {
+      this.loadingCards = false;
       console.log('error', err);
     })
   }
 
   searchPokemons(name: string) {
+    if (name.length == 0) {
+      this.cards = this.allPokemonCards;
+    }
     this.cards = this.allPokemonCards.filter(item => item.name.toLowerCase().includes(name));
   }
 

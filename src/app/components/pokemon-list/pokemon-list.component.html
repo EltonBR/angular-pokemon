@@ -1,5 +1,15 @@
+<mat-progress-bar
+  color="primary"
+  mode="indeterminate"
+  @inOutAnimation
+  *ngIf="loadingCards"
+>
+</mat-progress-bar>
 <div class="container">
   <div class="flex-grid">
+    <div class="message-container" @inOutAnimation *ngIf="cards.length == 0 && loadingCards === false">
+      Not found cards
+    </div>
     <div class="flex-grid-item" *ngFor="let card of cards" @inOutAnimation>
       <app-pokemon-card-item [card]="card"></app-pokemon-card-item>
     </div>

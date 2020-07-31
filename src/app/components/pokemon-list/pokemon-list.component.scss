@@ -6,6 +6,7 @@
 }
 
 .flex-grid-item {
+	cursor: pointer;
     transition: 120ms;
 	padding: 10px;
 	flex-grow: 1;
@@ -23,4 +24,16 @@
 
 .flex-grid-item app-pokemon-card-item {
 	width: 100%;
+}
+
+.message-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	background-color: #fff;
+	padding: 30px;
+	margin:20px;
+	font-size: 25px;
+	box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 }
