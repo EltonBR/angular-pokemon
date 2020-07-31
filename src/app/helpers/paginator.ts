@@ -4,7 +4,7 @@ export class Paginator {
     private atualPage: number = 0;
     private pageSumIndex = 0;
 
-    constructor(private data:any, private itensPerPage:number = 12) {
+    constructor(private data:any, private itensPerPage:number = 10) {
       this.totalPages = parseInt((data.length/itensPerPage).toString());
       this.lastPageCountItens = data.length%itensPerPage;
       if (this.lastPageCountItens > 0) {

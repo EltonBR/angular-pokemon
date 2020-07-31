@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchDataService } from '../../services/search-data.service';
-import { Router } from '@angular/router'; 
+import { Router, NavigationEnd } from '@angular/router'; 
 @Component({
   selector: 'app-search-box',
   templateUrl: './search-box.component.html',
@@ -12,6 +12,11 @@ export class SearchBoxComponent implements OnInit {
 
   constructor(private searchDispatcher: SearchDataService, private router: Router) {
     this.atualRoute = router.url;
+    router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.atualRoute = event.url;
+      }
+    });
   }
 
   ngOnInit(): void {
