@@ -4,7 +4,7 @@ export class Paginator {
     private atualPage: number = 0;
     private pageSumIndex = 0;
 
-    constructor(private data:any, private itensPerPage:number = 10) {
+    constructor(private data:any, private itensPerPage:number = 30) {
       this.totalPages = parseInt((data.length/itensPerPage).toString());
       this.lastPageCountItens = data.length%itensPerPage;
       if (this.lastPageCountItens > 0) {
@@ -16,7 +16,6 @@ export class Paginator {
         if (this.atualPage > this.totalPages) {
           return this.data.slice(this.data.length - this.lastPageCountItens, this.data.length);
         } else {
-          console.log(this.atualPage*this.itensPerPage, (this.atualPage*this.itensPerPage)+this.itensPerPage);
           return this.data.slice(this.atualPage*this.itensPerPage, (this.atualPage*this.itensPerPage)+this.itensPerPage);
         }
     }
