@@ -6,10 +6,10 @@ import { Subject } from 'rxjs';
 })
 export class SearchDataService {
   private dataObserver = new Subject();
-  getData() {
+  getData(): Subject<unknown> {
     return this.dataObserver;
   }
-  updateData(data: string) {
+  updateData(data: string): void {
     this.dataObserver.next(data);
   }
 }

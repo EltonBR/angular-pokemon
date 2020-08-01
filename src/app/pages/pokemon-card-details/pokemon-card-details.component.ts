@@ -28,7 +28,7 @@ export class PokemonCardDetailsComponent implements OnInit {
     });
   }
 
-  getCardDetails(id: string) {
+  getCardDetails(id: string): void {
     this.loadingCard = true;
     this.api.getPokemonCard(id).subscribe((response) => {
       this.loadingCard = false;

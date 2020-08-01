@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpResponse } from '@angular/common/http';
 
-const maxAge = 60000*10;
+const maxAge = 60000 * 10;
 @Injectable()
-export class RequestCache  {
+export class RequestCacheService  {
 
   cache = new Map();
 
@@ -27,9 +27,9 @@ export class RequestCache  {
 
   put(req: HttpRequest<any>, response: HttpResponse<any>): void {
 
-    if (req.method != 'GET') { //storage in cache only get methods
+    if (req.method !== 'GET') { // storage in cache only get methods
       return;
-    };
+    }
     const url = req.url;
     const entry = { url, response, lastRead: Date.now() };
     this.cache.set(url, entry);

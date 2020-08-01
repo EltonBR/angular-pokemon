@@ -25,8 +25,8 @@ const sortPokemonsByName = (a: ICard, b: ICard) => {
   ]
 })
 export class PokemonListComponent implements OnInit {
-  searchActive: boolean = false;
-  loadingCards: boolean = true;
+  searchActive = false;
+  loadingCards = true;
   allPokemonCards: Paginator;
   cards: ICard[] = [];
   constructor(private PokemonApi: PokemonListService, private searchListener: SearchDataService) { }
@@ -35,31 +35,30 @@ export class PokemonListComponent implements OnInit {
     this.listPokemons();
   }
 
-  listenSearch() {
+  listenSearch(): void {
     this.searchListener.getData().subscribe((data: string) => {
-     if (data.length > 2 || data.length == 0) {
+     if (data.length > 2 || data.length === 0) {
       this.searchPokemons(data);
      }
     });
   }
 
-  listPokemons() {
+  listPokemons(): void {
     this.loadingCards = true;
     this.PokemonApi.getPokemons().subscribe((response) => {
       this.loadingCards = false;
-      this.allPokemonCards = new Paginator(response.cards.sort(sortPokemonsByName));;
+      this.allPokemonCards = new Paginator(response.cards.sort(sortPokemonsByName));
       this.cards = this.allPokemonCards.getPageData();
       this.listenSearch();
-
     },
     (err) => {
       this.loadingCards = false;
       console.log('error', err);
-    })
+    });
   }
 
-  searchPokemons(name: string) {
-    if (name.length == 0) {
+  searchPokemons(name: string): void {
+    if (name.length === 0) {
       this.searchActive = false;
       this.allPokemonCards.setPage(0);
       this.cards = this.allPokemonCards.getPageData();
@@ -69,18 +68,18 @@ export class PokemonListComponent implements OnInit {
     }
   }
 
-  displayMoreCards() {
+  displayMoreCards(): void {
     this.allPokemonCards?.nextPage();
     if (!this.allPokemonCards?.end()) {
       this.cards = [...this.cards, ...this.allPokemonCards.getPageData()];
     }
   }
 
-  @HostListener("window:scroll", ["$event"])
-  onWindowScroll() {
-    let pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
-    let max = document.documentElement.scrollHeight;
-    if(pos == max )   {
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(): void {
+    const pos = (document.documentElement.scrollTop || document.body.scrollTop) + document.documentElement.offsetHeight;
+    const max = document.documentElement.scrollHeight;
+    if (pos === max )   {
 
       if (!this.searchActive) {
         this.displayMoreCards();

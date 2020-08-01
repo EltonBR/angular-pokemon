@@ -1,4 +1,4 @@
 export default interface IWeakness {
-    type: string,
-    value: number
-};
+    type: string;
+    value: number;
+}

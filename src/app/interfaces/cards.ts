@@ -1,7 +1,6 @@
-import ICard  from './card';
+import ICard from './card';
 interface ICards {
-    cards:[ICard]
+    cards: [ICard];
 }
-
 
 export default ICards;

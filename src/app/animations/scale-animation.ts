@@ -6,18 +6,18 @@ import {
 
 const ScaleAnimation = [
     transition(
-      ':enter', 
+      ':enter',
       [
         style({ transform: 'scale(0.3)'}),
-        animate('600ms ease-out', 
+        animate('600ms ease-out',
                 style({ transform: 'scale(1)' }))
       ]
     ),
     transition(
-      ':leave', 
+      ':leave',
       [
         style({ transform: 'scale(1)'}),
-        animate('350ms ease-in', 
+        animate('350ms ease-in',
                 style({ transform: 'scale(0)' }))
       ]
     )

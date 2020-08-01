@@ -4,7 +4,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { RequestCache } from './services/request-cache.service';
+import { RequestCacheService } from './services/request-cache.service';
 import { CachingInterceptor } from './services/caching-interceptor.service';
 import { SearchDataService } from './services/search-data.service';
 
@@ -30,7 +30,7 @@ import { PokemonCardDetailsModule } from './pages/pokemon-card-details/pokemon-c
   ],
   providers: [
     SearchDataService,
-    RequestCache,
+    RequestCacheService,
     { provide: HTTP_INTERCEPTORS, useClass: CachingInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]

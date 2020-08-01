@@ -23,13 +23,13 @@ describe('AppComponent', () => {
   it(`should have as title 'angular-pokemon'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('angular-pokemon');
+    expect(app.title).toEqual('AngularPokemon');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('angular-pokemon app is running!');
+    expect(compiled.querySelector('.header-container .header h1').textContent).toContain('Pokemons');
   });
 });

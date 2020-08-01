@@ -1,7 +1,7 @@
 import ICard from './card';
 
 interface ICardResponse {
-    card: ICard
+    card: ICard;
 }
 
 export default ICardResponse;
