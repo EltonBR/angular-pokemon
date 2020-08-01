@@ -16,6 +16,7 @@ import ICard from '../../interfaces/card';
 
 export class PokemonCardDetailsComponent implements OnInit {
   cardDetails: ICard;
+  panelOpenState: boolean;
   loadingCard: boolean;
   cardId: string;
   constructor(private api: PokemonCardDetailsService, private atualRoute: ActivatedRoute) { }

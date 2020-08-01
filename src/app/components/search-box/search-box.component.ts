@@ -15,6 +15,9 @@ export class SearchBoxComponent implements OnInit {
     router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.atualRoute = event.url;
+        if (this.atualRoute == '/') {
+          this.searchTerm = '';
+        }
       }
     });
   }

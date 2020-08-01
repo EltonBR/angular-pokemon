@@ -70,8 +70,8 @@ export class PokemonListComponent implements OnInit {
   }
 
   displayMoreCards() {
-    this.allPokemonCards.nextPage();
-    if (!this.allPokemonCards.end()) {
+    this.allPokemonCards?.nextPage();
+    if (!this.allPokemonCards?.end()) {
       this.cards = [...this.cards, ...this.allPokemonCards.getPageData()];
     }
   }
