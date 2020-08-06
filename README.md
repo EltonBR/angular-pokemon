@@ -2,6 +2,10 @@
 
 ## Desafio de programação
 
+## video Demo
+
+https://youtu.be/pKzEPUAzYXo
+
  *implementações*
  - lazy loading para imagens
  - lazy loading da lista
