@@ -2,6 +2,10 @@
 
 ## Desafio de programação
 
+
+## Live Demo
+https://angular-pokemon-o7rjugfny-eltonbr.vercel.app/
+
 ## video Demo
 
 https://youtu.be/pKzEPUAzYXo
